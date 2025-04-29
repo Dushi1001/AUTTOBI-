@@ -17,3 +17,7 @@ npx esbuild netlify/functions/api.js --bundle --platform=node --target=node16 --
 cp -r netlify/functions-dist/* netlify/functions/
 
 echo "Build completed successfully!"
+#!/bin/bash
+export NODE_PG_FORCE_NATIVE=true
+npm install
+npm run build
