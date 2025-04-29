@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import logoWithBg from '@/assets/logo-with-bg.png';
+import logoWithBg from '@/assets/Ecosyst.png.png';
 
 // Define slider content (without images since we're using video)
 const slides = [
@@ -82,7 +82,7 @@ export default function SimpleHero() {
           loop
           playsInline
         >
-          <source src="/videos/background.mp4" type="video/mp4" />
+          <source src="/videos/background.mp4.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
