@@ -254,58 +254,131 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/admin/users/:userId/login-history", authMiddleware, isAdmin, getUserLoginHistory);
   app.get("/api/admin/logs", authMiddleware, isAdmin, getAdminLogs);
 
-  // Games API
-  app.get("/api/games", (_req, res) => {
+  // Crypto Market API
+  app.get("/api/market", authMiddleware, (_req, res) => {
     try {
-      // In a real app, this would fetch from a database
+      // In a real app, this would fetch from a cryptocurrency API
       res.json([
         {
-          id: "1",
-          title: "Bitcoin Trading Bot",
-          description: "Automated trading bot for Bitcoin and other cryptocurrencies",
-          price: 0.01,
-          category: "tools",
-          releaseDate: "2023-03-15T00:00:00Z",
-          rating: 4.5,
-          publisher: "AUTTOBI",
+          id: "bitcoin",
+          symbol: "BTC",
+          name: "Bitcoin",
+          current_price: 62415.78,
+          market_cap: 1223567890123,
+          market_cap_rank: 1,
+          price_change_percentage_24h: 2.35,
+          circulating_supply: 19568431,
+          image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png"
         },
         {
-          id: "2",
-          title: "Ethereum Portfolio Manager",
-          description: "Manage and track your Ethereum-based assets",
-          price: 0.005,
-          category: "finance",
-          releaseDate: "2023-04-22T00:00:00Z",
-          rating: 4.7,
-          publisher: "AUTTOBI",
+          id: "ethereum",
+          symbol: "ETH",
+          name: "Ethereum",
+          current_price: 3050.42,
+          market_cap: 367890123456,
+          market_cap_rank: 2,
+          price_change_percentage_24h: 1.87,
+          circulating_supply: 120250891,
+          image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+        },
+        {
+          id: "binancecoin",
+          symbol: "BNB",
+          name: "BNB",
+          current_price: 605.32,
+          market_cap: 93245678901,
+          market_cap_rank: 3,
+          price_change_percentage_24h: 0.95,
+          circulating_supply: 153856150,
+          image: "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png"
         }
       ]);
     } catch (error) {
-      console.error("Error fetching games:", error);
+      console.error("Error fetching market data:", error);
       res.status(500).json({ message: "Server error" });
     }
   });
 
-  app.get("/api/games/:id", (req, res) => {
+  app.get("/api/market/:id", authMiddleware, (req, res) => {
     try {
       const { id } = req.params;
-      // Mock implementation
-      const game = {
-        id,
-        title: id === "1" ? "Bitcoin Trading Bot" : "Ethereum Portfolio Manager",
-        description: id === "1" 
-          ? "Automated trading bot for Bitcoin and other cryptocurrencies" 
-          : "Manage and track your Ethereum-based assets",
-        price: id === "1" ? 0.01 : 0.005,
-        category: id === "1" ? "tools" : "finance",
-        releaseDate: "2023-03-15T00:00:00Z",
-        rating: 4.5,
-        publisher: "AUTTOBI",
-      };
+      // Mock implementation - in real app would fetch from cryptocurrency API
+      let coin;
       
-      res.json(game);
+      if (id === "bitcoin") {
+        coin = {
+          id: "bitcoin",
+          symbol: "BTC",
+          name: "Bitcoin",
+          current_price: 62415.78,
+          market_cap: 1223567890123,
+          market_cap_rank: 1,
+          price_change_percentage_24h: 2.35,
+          circulating_supply: 19568431,
+          image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+          description: "Bitcoin is the first decentralized cryptocurrency, based on blockchain technology.",
+          links: {
+            homepage: ["https://bitcoin.org/"],
+            blockchain_site: ["https://blockchair.com/bitcoin/", "https://btc.com/", "https://btc.tokenview.io/"]
+          },
+          market_data: {
+            ath: 69045,
+            ath_date: "2021-11-10T14:24:11.849Z",
+            atl: 67.81,
+            atl_date: "2013-07-06T00:00:00.000Z"
+          }
+        };
+      } else if (id === "ethereum") {
+        coin = {
+          id: "ethereum",
+          symbol: "ETH",
+          name: "Ethereum",
+          current_price: 3050.42,
+          market_cap: 367890123456,
+          market_cap_rank: 2,
+          price_change_percentage_24h: 1.87,
+          circulating_supply: 120250891,
+          image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+          description: "Ethereum is a decentralized, open-source blockchain with smart contract functionality.",
+          links: {
+            homepage: ["https://ethereum.org/"],
+            blockchain_site: ["https://etherscan.io/", "https://ethplorer.io/", "https://blockchair.com/ethereum"]
+          },
+          market_data: {
+            ath: 4878.26,
+            ath_date: "2021-11-10T14:24:19.604Z",
+            atl: 0.432979,
+            atl_date: "2015-10-20T00:00:00.000Z"
+          }
+        };
+      } else {
+        coin = {
+          id: "binancecoin",
+          symbol: "BNB",
+          name: "BNB",
+          current_price: 605.32,
+          market_cap: 93245678901,
+          market_cap_rank: 3,
+          price_change_percentage_24h: 0.95,
+          circulating_supply: 153856150,
+          image: "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png",
+          description: "Binance Coin (BNB) is a cryptocurrency used to pay fees on the Binance exchange.",
+          links: {
+            homepage: ["https://www.binance.com/"],
+            blockchain_site: ["https://bscscan.com/", "https://explorer.binance.org/", "https://etherscan.io/token/0xB8c77482e45F1F44dE1745F52C74426C631bDD52"]
+          },
+          market_data: {
+            ath: 690.93,
+            ath_date: "2021-05-10T07:30:56.008Z",
+            atl: 0.0398177,
+            atl_date: "2017-10-19T00:00:00.000Z"
+          }
+        };
+      }
+      
+      res.json(coin);
     } catch (error) {
-      console.error(`Error fetching game ${req.params.id}:`, error);
+      console.error(`Error fetching market data for ${req.params.id}:`, error);
       res.status(500).json({ message: "Server error" });
     }
   });
@@ -354,6 +427,132 @@ export async function registerRoutes(app: Express): Promise<Server> {
       ]);
     } catch (error) {
       console.error("Error fetching transactions:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+
+  // Support & FAQ API
+  app.get("/api/faq", (_req, res) => {
+    try {
+      // In a real app, this would fetch from a database
+      res.json([
+        {
+          id: 1,
+          category: "account",
+          question: "How do I verify my account?",
+          answer: "To verify your account, go to your profile settings and navigate to the KYC verification section. Upload the required documents (government-issued ID, proof of address, and a selfie). Our team will review your submission within 1-2 business days."
+        },
+        {
+          id: 2,
+          category: "account",
+          question: "What is KYC verification and why is it required?",
+          answer: "KYC (Know Your Customer) verification is a standard process in the financial industry to verify the identity of users. It helps prevent fraud, money laundering, and ensures compliance with regulations. We require KYC verification to protect our platform and users."
+        },
+        {
+          id: 3,
+          category: "wallet",
+          question: "How do I deposit cryptocurrency to my wallet?",
+          answer: "To deposit cryptocurrency, go to your wallet page and click 'Deposit'. Select the cryptocurrency you wish to deposit and use the provided wallet address or QR code to send funds from your external wallet."
+        },
+        {
+          id: 4,
+          category: "wallet",
+          question: "What are the withdrawal fees?",
+          answer: "Withdrawal fees vary by cryptocurrency and network conditions. When making a withdrawal, the current fee will be displayed before you confirm the transaction. We aim to keep fees as low as possible while ensuring timely processing."
+        },
+        {
+          id: 5,
+          category: "security",
+          question: "How can I enable two-factor authentication (2FA)?",
+          answer: "To enable 2FA, go to your security settings, select 'Two-Factor Authentication', and follow the prompts to set up with an authenticator app like Google Authenticator or Authy. This adds an extra layer of security to your account."
+        },
+        {
+          id: 6,
+          category: "security",
+          question: "What should I do if I suspect unauthorized access to my account?",
+          answer: "If you suspect unauthorized access, immediately change your password, enable 2FA if not already active, and contact our support team. We recommend reviewing your recent activity and ensuring your email account is also secure."
+        },
+        {
+          id: 7,
+          category: "trading",
+          question: "What trading pairs are available on the platform?",
+          answer: "We offer a wide range of trading pairs including BTC/USD, ETH/USD, BNB/USD, and many other major cryptocurrencies paired with USD, EUR, and BTC. Visit our market page to see all available trading pairs."
+        },
+        {
+          id: 8,
+          category: "support",
+          question: "How can I contact customer support?",
+          answer: "You can contact our customer support team through the help center on our platform, by email at support@auttobi.com, or through the live chat feature available during business hours. We aim to respond to all inquiries within 24 hours."
+        }
+      ]);
+    } catch (error) {
+      console.error("Error fetching FAQ:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+
+  app.get("/api/support/categories", (_req, res) => {
+    try {
+      res.json([
+        {
+          id: "account",
+          name: "Account Issues",
+          description: "Questions about account setup, verification, and management"
+        },
+        {
+          id: "wallet",
+          name: "Wallet & Transactions",
+          description: "Help with deposits, withdrawals, and transaction issues"
+        },
+        {
+          id: "security",
+          name: "Security",
+          description: "Account security, 2FA, and protecting your assets"
+        },
+        {
+          id: "trading",
+          name: "Trading",
+          description: "Questions about trading features and functionality"
+        },
+        {
+          id: "technical",
+          name: "Technical Issues",
+          description: "Help with platform technical problems"
+        }
+      ]);
+    } catch (error) {
+      console.error("Error fetching support categories:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+
+  // Contact Support API endpoint
+  app.post("/api/support/contact", authMiddleware, (req, res) => {
+    try {
+      const { subject, category, message } = req.body;
+      
+      if (!subject || !category || !message) {
+        return res.status(400).json({ message: "Subject, category, and message are required" });
+      }
+      
+      // In a real app, this would save to a database and possibly send an email
+      const supportTicket = {
+        id: `TICKET-${Date.now()}`,
+        userId: req.session.userId,
+        subject,
+        category,
+        message,
+        status: "open",
+        createdAt: new Date().toISOString()
+      };
+      
+      res.status(201).json({
+        id: supportTicket.id,
+        status: supportTicket.status,
+        message: "Your support ticket has been submitted successfully"
+      });
+    } catch (error) {
+      console.error("Error submitting support ticket:", error);
       res.status(500).json({ message: "Server error" });
     }
   });

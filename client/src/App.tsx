@@ -12,6 +12,7 @@ import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
 import SignupPage from "@/pages/SignupPage";
 import AdminPanel from "@/pages/admin";
+import Support from "@/pages/support";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,9 +21,13 @@ function Router() {
       <Route path="/" component={HomePage} />
       <Route path="/dashboard" component={DashboardPage} />
       <Route path="/portfolio" component={PortfolioPage} />
+      <Route path="/wallet" component={DashboardPage} /> {/* Placeholder until Wallet page is created */}
+      <Route path="/analytics" component={DashboardPage} /> {/* Placeholder until Analytics page is created */}
+      <Route path="/market" component={PortfolioPage} /> {/* Placeholder until Market page is created */}
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/admin" component={AdminPanel} />
+      <Route path="/support" component={Support} />
       <Route component={NotFound} />
     </Switch>
   );
