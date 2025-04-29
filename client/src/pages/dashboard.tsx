@@ -10,6 +10,8 @@ import Sidebar from "@/components/layout/sidebar";
 import { GameList } from "@/components/gaming/game-list";
 import { WalletConnect } from "@/components/blockchain/wallet-connect";
 import { formatCurrency } from "@/lib/utils";
+import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { SiBinance, SiDogecoin, SiLitecoin } from "react-icons/si";
 
 export default function Dashboard() {
   const { toast } = useToast();
@@ -19,7 +21,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   
   useEffect(() => {
-    document.title = "Dashboard | Gaming App";
+    document.title = "Dashboard | AUTTOBI Wallet";
   }, []);
 
   const handleBuildClick = () => {
@@ -46,8 +48,8 @@ export default function Dashboard() {
         <header className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div>
-              <h1 className="text-3xl font-bold font-display text-white">Welcome, {username || 'Gamer'}</h1>
-              <p className="text-muted-foreground mt-1">Your gaming dashboard</p>
+              <h1 className="text-3xl font-bold font-display text-white">Welcome to AUTTOBI, {username || 'User'}</h1>
+              <p className="text-muted-foreground mt-1">Your crypto wallet with gaming features</p>
             </div>
             <div className="mt-4 sm:mt-0">
               <Button onClick={handleBuildClick} className="bg-primary hover:bg-primary/90 flex items-center">
@@ -122,8 +124,8 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card className="col-span-1 lg:col-span-2">
                 <CardHeader>
-                  <CardTitle>Gaming Activity</CardTitle>
-                  <CardDescription>Your gaming stats over time</CardDescription>
+                  <CardTitle>Wallet Activity</CardTitle>
+                  <CardDescription>Your AUTTOBI stats over time</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-[350px]">
