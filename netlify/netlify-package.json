@@ -1,0 +1,19 @@
+{
+  "name": "auttobi-crypto-platform",
+  "version": "1.0.0",
+  "description": "AUTTOBI Cryptocurrency Investment Platform",
+  "scripts": {
+    "build": "vite build && echo 'Frontend build complete'",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "bcryptjs": "^3.0.2",
+    "connect-pg-simple": "^10.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "pg": "^8.11.3",
+    "serverless-http": "^3.2.0"
+  }
+}
