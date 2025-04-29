@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RootState } from "@/store/store";
 import { GameList } from "@/components/gaming/game-list";
-import Sidebar from "@/components/layout/sidebar";
+import Sidebar from "@/components/layout/SidebarComponent";
 import { GameType } from "@/types";
 
 export default function Games() {

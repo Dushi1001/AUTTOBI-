@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { GamingStats } from "@/components/charts/gaming-stats";
-import Sidebar from "@/components/layout/sidebar";
+import Sidebar from "@/components/layout/SidebarComponent";
 
 export default function Analytics() {
   useEffect(() => {

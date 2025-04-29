@@ -13,7 +13,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import Sidebar from "@/components/layout/sidebar";
+import Sidebar from "@/components/layout/SidebarComponent";
 
 // Type definitions
 type FAQ = {

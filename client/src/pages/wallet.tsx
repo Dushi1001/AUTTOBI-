@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RootState } from "@/store/store";
 import { WalletConnect } from "@/components/blockchain/wallet-connect";
 import { TransactionHistory } from "@/components/blockchain/transaction-history";
-import Sidebar from "@/components/layout/sidebar";
+import Sidebar from "@/components/layout/SidebarComponent";
 import { formatCurrency, formatAddress } from "@/lib/utils";
 import { connectWallet } from "@/store/slices/walletSlice";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";

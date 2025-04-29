@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { RootState } from "@/store/store";
 import { GamingStats } from "@/components/charts/gaming-stats";
-import Sidebar from "@/components/layout/sidebar";
+import Sidebar from "@/components/layout/SidebarComponent";
 import { GameList } from "@/components/gaming/game-list";
 import { WalletConnect } from "@/components/blockchain/wallet-connect";
 import { formatCurrency } from "@/lib/utils";

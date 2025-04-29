@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { RootState } from "@/store/store";
-import Sidebar from "@/components/layout/sidebar";
+import Sidebar from "@/components/layout/SidebarComponent";
 import { updateUsername } from "@/store/slices/userSlice";
 import { useToast } from "@/hooks/use-toast";
 
