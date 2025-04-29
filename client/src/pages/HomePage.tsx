@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import SimpleHero from "@/components/home/simple-hero";import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/features/auth/AuthContext";
 import { ArrowRight, Gamepad2, Trophy, TrendingUp, Shield } from "lucide-react";
