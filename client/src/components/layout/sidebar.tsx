@@ -3,3 +3,4 @@
 
 import Sidebar from "./SidebarComponent";
 export default Sidebar;
+"Add sidebar compatibility layer"
