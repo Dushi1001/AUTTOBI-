@@ -2,24 +2,29 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import session from "express-session";
-import MemoryStore from "memorystore";
+import pgSession from "connect-pg-simple";
+import { pool } from "./db";
+
+// Create PostgreSQL session store
+const PgStore = pgSession(session);
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Create a memory store for sessions
-const MemoryStoreSession = MemoryStore(session);
+// Configure session with PostgreSQL store
 app.use(session({
-  secret: "your-secret-key",
+  store: new PgStore({
+    pool,
+    tableName: 'session',
+    createTableIfMissing: true
+  }),
+  secret: process.env.SESSION_SECRET || "auttobi-crypto-wallet-secret",
   resave: false,
   saveUninitialized: false,
-  store: new MemoryStoreSession({
-    checkPeriod: 86400000 // prune expired entries every 24h
-  }),
   cookie: {
-    maxAge: 86400000, // 24 hours
-    secure: false // Set to true in production with HTTPS
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    secure: process.env.NODE_ENV === 'production'
   }
 }));
 

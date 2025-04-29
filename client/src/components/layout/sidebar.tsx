@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { FaBitcoin, FaEthereum, FaWallet } from "react-icons/fa";
+import { FaBitcoin, FaEthereum, FaWallet, FaUserShield } from "react-icons/fa";
 import { SiBinance } from "react-icons/si";
 
 export default function Sidebar() {
@@ -25,13 +25,15 @@ export default function Sidebar() {
       title: "Dashboard"
     },
     {
-      href: "/games",
+      href: "/portfolio",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+          <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+          <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+          <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
         </svg>
       ),
-      title: "Games"
+      title: "Portfolio"
     },
     {
       href: "/wallet",
@@ -46,8 +48,20 @@ export default function Sidebar() {
         </svg>
       ),
       title: "Analytics"
+    },
+    {
+      href: "/market",
+      icon: <FaEthereum className="h-5 w-5" />,
+      title: "Market"
     }
   ];
+
+  // Add admin link - we'll show it for everyone for now
+  const adminItem = {
+    href: "/admin",
+    icon: <FaUserShield className="h-5 w-5" />,
+    title: "Admin Panel"
+  };
 
   const bottomNav = [
     {
@@ -60,6 +74,9 @@ export default function Sidebar() {
       title: "Settings"
     }
   ];
+
+  // Temporary check until we integrate with real Redux store
+  const showAdminPanel = true; // For development - we'll display admin panel for all users
 
   return (
     <aside
@@ -120,6 +137,27 @@ export default function Sidebar() {
                 </a>
               </Link>
             ))}
+            
+            {/* Admin section - using the direct array for now */}
+            {showAdminPanel && (
+              <Link
+                key="/admin"
+                href="/admin"
+              >
+                <a
+                  className={cn(
+                    "flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    location === "/admin"
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground",
+                    collapsed ? "justify-center px-2" : ""
+                  )}
+                >
+                  <FaUserShield className="h-5 w-5" />
+                  {!collapsed && <span className="ml-3">Admin Panel</span>}
+                </a>
+              </Link>
+            )}
           </nav>
         </ScrollArea>
         <div className="mt-auto border-t border-border px-3 py-4">
