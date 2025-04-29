@@ -19,7 +19,7 @@ export default function Wallet() {
   const { address, balance, isConnected, transactions } = useSelector((state: RootState) => state.wallet);
   
   useEffect(() => {
-    document.title = "Wallet | Gaming App";
+    document.title = "Wallet | AUTTOBI Crypto";
   }, []);
 
   return (
@@ -35,8 +35,15 @@ export default function Wallet() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Wallet Balance</CardTitle>
-              <CardDescription>Available funds</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-lg">Bitcoin</CardTitle>
+                  <CardDescription>BTC Balance</CardDescription>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-amber-500/20 flex items-center justify-center">
+                  <FaBitcoin className="h-6 w-6 text-amber-500" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{formatCurrency(balance)}</div>
