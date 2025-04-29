@@ -4,6 +4,15 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
+  // Other config properties...
+  
+  build: {
+    outDir: 'dist/client',
+    // Other build config...
+  }
+  
+  // Other config properties...
+})({
   plugins: [
     react(),
     runtimeErrorOverlay(),
