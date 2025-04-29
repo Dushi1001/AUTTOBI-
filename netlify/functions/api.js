@@ -1,3 +1,4 @@
+process.env.NODE_PG_FORCE_NATIVE = 'true'; // Force pg-native for Netlify
 // Netlify serverless function to handle API requests
 const express = require('express');
 const serverless = require('serverless-http');
