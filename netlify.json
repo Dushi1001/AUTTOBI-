@@ -1,0 +1,8 @@
+{
+  "name": "auttobi-netlify-build",
+  "scripts": {
+    "build:functions": "esbuild netlify/functions/*.js --bundle --platform=node --target=node16 --outdir=./netlify/functions-dist",
+    "build:client": "vite build",
+    "build": "npm run build:client && npm run build:functions"
+  }
+}
