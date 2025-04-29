@@ -1,15 +1,9 @@
 [build]
-  command = "bash netlify/build.sh"
-  publish = "dist"
+  command = "npm run build"
+  publish = "dist/client"
 
 [build.environment]
   NODE_VERSION = "20"
-  NODE_PG_FORCE_NATIVE = "true"
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
-  status = 200
 
 [[redirects]]
   from = "/*"
