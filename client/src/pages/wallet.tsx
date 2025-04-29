@@ -11,6 +11,8 @@ import { TransactionHistory } from "@/components/blockchain/transaction-history"
 import Sidebar from "@/components/layout/sidebar";
 import { formatCurrency, formatAddress } from "@/lib/utils";
 import { connectWallet } from "@/store/slices/walletSlice";
+import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { SiBinance, SiDogecoin, SiLitecoin } from "react-icons/si";
 
 export default function Wallet() {
   const dispatch = useDispatch();
@@ -48,23 +50,37 @@ export default function Wallet() {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Game Tokens</CardTitle>
-              <CardDescription>In-game currency</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-lg">Ethereum</CardTitle>
+                  <CardDescription>ETH Balance</CardDescription>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                  <FaEthereum className="h-6 w-6 text-blue-500" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">1,250 GTK</div>
-              <div className="text-xs text-muted-foreground mt-1">≈ {formatCurrency(1250 * 0.012)}</div>
+              <div className="text-2xl font-bold">1.45 ETH</div>
+              <div className="text-xs text-muted-foreground mt-1">≈ {formatCurrency(1.45 * 2850)}</div>
             </CardContent>
           </Card>
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">NFT Items</CardTitle>
-              <CardDescription>Collectibles owned</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-lg">Binance Coin</CardTitle>
+                  <CardDescription>BNB Balance</CardDescription>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                  <SiBinance className="h-6 w-6 text-yellow-500" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">8</div>
-              <div className="text-xs text-muted-foreground mt-1">Value: {formatCurrency(1425)}</div>
+              <div className="text-2xl font-bold">8.5 BNB</div>
+              <div className="text-xs text-muted-foreground mt-1">Value: {formatCurrency(8.5 * 475)}</div>
             </CardContent>
           </Card>
         </div>

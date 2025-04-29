@@ -66,8 +66,15 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Wallet Balance</CardTitle>
-              <CardDescription>Your current assets</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-lg">Wallet Balance</CardTitle>
+                  <CardDescription>Your current assets</CardDescription>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-amber-500/20 flex items-center justify-center">
+                  <FaBitcoin className="h-6 w-6 text-amber-500" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{formatCurrency(balance)}</div>
@@ -82,24 +89,38 @@ export default function Dashboard() {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Games Played</CardTitle>
-              <CardDescription>This month</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-lg">Ethereum</CardTitle>
+                  <CardDescription>ETH Holdings</CardDescription>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                  <FaEthereum className="h-6 w-6 text-blue-500" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">24</div>
-              <div className="text-xs text-green-500 mt-1">+12% from last month</div>
+              <div className="text-2xl font-bold">1.45 ETH</div>
+              <div className="text-xs text-green-500 mt-1">+5.7% (24h)</div>
             </CardContent>
             <CardFooter>
               <Button variant="outline" size="sm" className="w-full" asChild>
-                <a href="/games">View Games</a>
+                <a href="/wallet">View Portfolio</a>
               </Button>
             </CardFooter>
           </Card>
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Achievement Points</CardTitle>
-              <CardDescription>Total earned</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-lg">AUTTOBI Points</CardTitle>
+                  <CardDescription>Gaming rewards</CardDescription>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-violet-500/20 flex items-center justify-center">
+                  <SiDogecoin className="h-6 w-6 text-violet-500" />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">3,250</div>
