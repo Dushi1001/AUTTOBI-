@@ -1,11 +1,10 @@
 [build]
   command = "bash netlify/build.sh"
-  publish = "dist/public"
-  functions = "netlify/functions"
-  
+  publish = "dist"
+
 [build.environment]
-  NODE_VERSION = "18"
-  NODE_PG_FORCE_NATIVE = "0"
+  NODE_VERSION = "20"
+  NODE_PG_FORCE_NATIVE = "true"
 
 [[redirects]]
   from = "/api/*"
