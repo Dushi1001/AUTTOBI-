@@ -38,7 +38,6 @@ export default function Settings() {
     toast({
       title: "Profile Updated",
       description: "Your profile has been updated successfully.",
-      variant: "success",
     });
   };
 
@@ -46,7 +45,6 @@ export default function Settings() {
     toast({
       title: "Configuration Updated",
       description: "Build configuration has been updated successfully.",
-      variant: "success",
     });
   };
 

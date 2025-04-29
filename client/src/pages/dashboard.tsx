@@ -35,7 +35,6 @@ export default function Dashboard() {
       toast({
         title: "Build Complete",
         description: "Your project was built successfully!",
-        variant: "success",
       });
     }, 3000);
   };
