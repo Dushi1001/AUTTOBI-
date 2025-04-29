@@ -1,30 +1,10 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-
 export default defineConfig({
-  // Keep all existing configuration here
+  // Keep all existing configuration
   
-  // Add this build section if it doesn't exist, or update it if it does
   build: {
-    // Keep any existing build options
+    outDir: 'dist/client',
     rollupOptions: {
       external: ['pg-cloudflare']
     }
-  }
-});({
-  plugins: [react()],
-  base: '/',
-  build: {
-    outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: undefined
-      }
-    }
-  },
-  server: {
-    port: 3000,
-    host: true
   }
 });
