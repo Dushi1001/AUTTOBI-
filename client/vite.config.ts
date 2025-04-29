@@ -1,4 +1,8 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+// Add any other imports you need
+
 export default defineConfig({
-  root: '.',  // This is the key setting
-  // other settings...
+  plugins: [react()],
+  // other configuration options...
 })
