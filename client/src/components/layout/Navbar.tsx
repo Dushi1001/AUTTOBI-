@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="flex gap-6 md:gap-10">
           <Link href="/" className="flex items-center space-x-2">
             <Gamepad2 className="h-6 w-6 text-primary" />
-            <span className="hidden font-bold sm:inline-block text-lg">GamingApp</span>
+            <span className="hidden font-bold sm:inline-block text-lg">AUTTOBI</span>
           </Link>
           
           <div className="hidden md:flex gap-6">
